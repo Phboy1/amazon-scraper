@@ -5,7 +5,7 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-SERPAPI_API_KEY = "bf3be485562e54ee3ca088bdb7d9f805bfd84b69485a6a12af92f493c6f0d49c"
+SERPAPI_API_KEY = "YOUR_SERPAPI_GOES_HERE"
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
