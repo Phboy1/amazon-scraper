@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results for "{{ keyword }}"</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='results.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Amazon Results for "{{ keyword }}"</h1>
+            <a href="/" class="search-again-btn">Search Again</a>
+            <h2 class="average">Average Price: ${{ average | round(2) }}</h2>
+        </div>
+        
+        <div class="results-grid">
+            {% if items %}
+                {% for item in items %}
+                    <div class="item-card">
+                        <img src="{{ item.thumbnail }}" alt="{{ keyword }}">
+                        <div class="item-title">{{ item.title }}</div>
+                        <div class="item-price">{{ item.price }}</div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="no-results">
+                    <p>No results found for "{{ keyword }}". Try searching for something else!</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
