@@ -5,7 +5,7 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-SERPAPI_API_KEY = "YOUR_SERPAPI_GOES_HERE"
+SERPAPI_API_KEY = "YOUR_SERPAPI_KEY_GOES_HERE"
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -28,8 +28,9 @@ def index():
             title = result.get("title", "No title")
             price_str = result.get("price", "No price")
             thumbnail = result.get("thumbnail", "No image")
+            link = result.get("link", "No image")
 
-            items.append({"title": title, "price": price_str, "thumbnail": thumbnail})
+            items.append({"title": title, "price": price_str, "thumbnail": thumbnail, "link": link})
 
             try:
                 price = float(price_str.replace("$", "").replace(",", ""))
@@ -44,6 +45,6 @@ def index():
         else: 
             average = 0
 
-        return render_template("results.html", keyword=keyword, items=items, thumbnail=thumbnail, average=average)
+        return render_template("results.html", keyword=keyword, items=items, thumbnail=thumbnail, average=average, link=link)
 
     return render_template("index.html")

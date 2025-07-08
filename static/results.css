@@ -91,6 +91,11 @@ body {
     color: #2c3e50;
     margin-bottom: 10px;
     line-height: 1.4;
+    text-decoration: none;
+}
+
+.item-title:hover {
+    cursor: pointer;
 }
 
 .item-price {
