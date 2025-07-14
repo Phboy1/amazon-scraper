@@ -16,19 +16,25 @@
         </div>
         
         <div class="results-grid">
-            {% if items %}
-                {% for item in items %}
+            
+            {% if best_deal %}
+                <div class="best-deal-card">
+                    <h3>🔥 Best Deal</h3>
+                    <img src="{{ best_deal.thumbnail }}" alt="{{ keyword }}">
+                    <a href="{{ best_deal.link }}" class="item-title">{{ best_deal.title }}</a>
+                    <div class="best-item-price">{{ best_deal.price }}</div>
+                </div>
+            {% endif %}
+
+            {% for item in items %}
+                {% if item.link != best_deal.link %}
                     <div class="item-card">
                         <img src="{{ item.thumbnail }}" alt="{{ keyword }}">
                         <a href="{{ item.link }}" class="item-title">{{ item.title }}</a>
                         <div class="item-price">{{ item.price }}</div>
                     </div>
-                {% endfor %}
-            {% else %}
-                <div class="no-results">
-                    <p>No results found for "{{ keyword }}". Try searching for something else!</p>
-                </div>
-            {% endif %}
+                {% endif %}
+            {% endfor %}
         </div> 
     </div>
 </body>

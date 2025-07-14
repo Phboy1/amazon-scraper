@@ -164,3 +164,64 @@ img {
     margin: 0 auto;
     width: 100;
 }
+
+.best-deal-card {
+    background: linear-gradient(135deg, #ad393a, #f43f3f); 
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.best-deal-card img {
+    border-radius: 12px;
+    max-width: 80%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.best-deal-card a {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    display: block;
+    margin: 10px 0;
+}
+
+.best-deal-card a:hover {
+    text-decoration: underline;
+}
+
+.best-deal-card .best-item-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.best-deal-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 45px rgba(255, 50, 50, 0.35);
+}
+
+.best-deal-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    text-align: center;
+}
+
+.best-deal-card .item-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffeaa7;
+}
+

@@ -3,7 +3,6 @@ import requests
 from flask import Flask, render_template, request
 from dotenv import load_dotenv
 
-# Load environment variables
 load_dotenv()
 
 app = Flask(__name__)
@@ -25,6 +24,8 @@ def index():
         items = []
         total_price = 0
         count = 0
+        best_deal = None
+        lowest = float('inf')
 
         for result in response.get("organic_results", []):
             title = result.get("title", "No title")
@@ -32,17 +33,22 @@ def index():
             thumbnail = result.get("thumbnail", "https://via.placeholder.com/100")  
             link = result.get("link", "#")  
 
-            items.append({
+            item = {
                 "title": title,
                 "price": price_str,
                 "thumbnail": thumbnail,
                 "link": link
-            })
+            }
+
+            items.append(item)
 
             try:
                 price = float(price_str.replace("$", "").replace(",", ""))
                 total_price += price
                 count += 1
+                if price < lowest:
+                    lowest = price
+                    best_deal = item
             except:
                 continue
 
@@ -51,6 +57,6 @@ def index():
         else: 
             average = 0
 
-        return render_template("results.html", keyword=keyword, items=items, average=average)
+        return render_template("results.html", keyword=keyword, items=items, average=average, best_deal=best_deal)
 
     return render_template("index.html")
